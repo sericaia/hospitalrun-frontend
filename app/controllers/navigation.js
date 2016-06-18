@@ -29,8 +29,8 @@ export default Ember.Controller.extend(HospitalRunVersion, ModalHelper, Progress
       });
     },
     preferences: function() {
-      this.getUserPreferences().then(function(userPreferences) {
-        this.send('openModal', 'preferences.notifications', userPreferences);
+      this.getUserPreference().then(function(userPreference) {
+        this.send('openModal', 'preferences.notifications', userPreference);
       }.bind(this));
     },
     invalidateSession: function() {

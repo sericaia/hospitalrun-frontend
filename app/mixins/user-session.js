@@ -463,13 +463,13 @@ export default Ember.Mixin.create({
       return session.get('data.authenticated');
     }
   },
-  getUserPreferences: function() {
+  getUserPreference: function() {
     let userName = this._getUserSessionVars().name;
     return new Ember.RSVP.Promise((resolve) => {
-      this.store.find('user-preferences', userName).then((userPrefs) => {
+      this.store.find('user-preference', userName).then((userPrefs) => {
         resolve(userPrefs);
       }).catch(() => {
-        let newRecord = this.store.createRecord('user-preferences', {
+        let newRecord = this.store.createRecord('user-preference', {
           name: userName,
           receivesNotifications: true
         });

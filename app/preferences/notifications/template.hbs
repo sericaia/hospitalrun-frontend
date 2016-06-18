@@ -1,0 +1,13 @@
+{{#modal-dialog
+    hideCancelButton=hideCancelButton
+    isUpdateDisabled=isUpdateDisabled
+    title=title
+    updateButtonAction=updateButtonAction
+    updateButtonText=updateButtonText }}
+  Name: {{model.name}}
+  {{#em-form model=model submitButton=false }}
+    <div class="row">
+      {{em-checkbox label="Notifications Active" property="receivesNotifications"}}
+    </div>
+  {{/em-form}}
+{{/modal-dialog}}

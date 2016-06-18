@@ -28,7 +28,11 @@ export default Ember.Controller.extend(HospitalRunVersion, ModalHelper, Progress
         this.displayAlert(this.get('i18n').t('navigation.about'), message);
       });
     },
-
+    preferences: function() {
+      this.getUserPreferences().then(function(userPreferences) {
+        this.send('openModal', 'preferences.notifications', userPreferences);
+      }.bind(this));
+    },
     invalidateSession: function() {
       const session = this.get('session');
       if (session.get('isAuthenticated')) {

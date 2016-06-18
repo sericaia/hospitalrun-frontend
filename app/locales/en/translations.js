@@ -43,7 +43,8 @@ export default {
       logout: 'Logout',
       login: 'Login'
     },
-    about: 'About HospitalRun'
+    about: 'About HospitalRun',
+    preferences: 'Preferences'
   },
   user: {
     plus_new_user: '+ new user',

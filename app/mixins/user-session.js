@@ -463,7 +463,20 @@ export default Ember.Mixin.create({
       return session.get('data.authenticated');
     }
   },
-
+  getUserPreferences: function() {
+    let userName = this._getUserSessionVars().name;
+    return new Ember.RSVP.Promise((resolve) => {
+      this.store.find('user-preferences', userName).then((userPrefs) => {
+        resolve(userPrefs);
+      }).catch(() => {
+        let newRecord = this.store.createRecord('user-preferences', {
+          name: userName,
+          receivesNotifications: true
+        });
+        resolve(newRecord);
+      });
+    });
+  },
   currentUserCan: function(capability) {
     var sessionVars = this._getUserSessionVars();
     if (!Ember.isEmpty(sessionVars) && !Ember.isEmpty(sessionVars.role)) {
